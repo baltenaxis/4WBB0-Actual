@@ -104,7 +104,7 @@ public class Register extends AppCompatActivity {
 
         if (fAuth.getCurrentUser() != null && fAuth.getCurrentUser().isEmailVerified()) {
             mLoginBtn.setText(fAuth.getCurrentUser().getDisplayName());
-            startActivity(new Intent(getApplicationContext(), LoginMain.class));
+            startActivity(new Intent(getApplicationContext(), Login.class));
             finish();
         }
 

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "445521794452",
+    "firebase_url": "https://vintagefoodslogin-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "vintagefoodslogin",
+    "storage_bucket": "vintagefoodslogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445521794452:android:f828d402ee25487c722b81",
+        "android_client_info": {
+          "package_name": "com.example.database2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445521794452-js52qkcpj76mojcmt8ov2dte0t1hhep7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2LV52vM4oWiN5f0-CzbrK5gaHHs916g4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445521794452-js52qkcpj76mojcmt8ov2dte0t1hhep7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445521794452:android:692c20d1439289b4722b81",
+        "android_client_info": {
+          "package_name": "com.example.vintagefoodsloginandregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445521794452-js52qkcpj76mojcmt8ov2dte0t1hhep7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2LV52vM4oWiN5f0-CzbrK5gaHHs916g4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445521794452-js52qkcpj76mojcmt8ov2dte0t1hhep7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

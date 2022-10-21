@@ -8,9 +8,15 @@
     tools:context=".SplashScreen">
 
     <ImageView
+<<<<<<< Updated upstream
         android:id="@+id/imageView5"
         android:layout_width="229dp"
         android:layout_height="477dp"
+=======
+        android:id="@+id/imageView4"
+        android:layout_width="275dp"
+        android:layout_height="393dp"
+>>>>>>> Stashed changes
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

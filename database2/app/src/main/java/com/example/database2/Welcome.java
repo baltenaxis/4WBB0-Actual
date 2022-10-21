@@ -16,11 +16,8 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-
         mLoginPageBtn = findViewById(R.id.loginPageBtn);
         mRegisterPageBtn = findViewById(R.id.registerPageBtn);
-
 
         mLoginPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -62,14 +62,14 @@
         </activity>
         <activity
             android:name=".Login"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Register"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -95,6 +95,28 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-    </application>
+        <activity
+            android:name=".Mainpage"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value=""    />
+        </activity>
 
+        <activity
+            android:name=".UploadOffer"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".Offers"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+    </application>
 </manifest>

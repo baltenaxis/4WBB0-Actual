@@ -2,7 +2,10 @@ package com.example.database2;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,31 +16,63 @@ public class InventoryHandler extends AppCompatActivity {
     String[] data;
 
     protected void onCreate(Bundle savedInstanceState) {
+        ListView list;
+
+        String[] maintitle ={
+                "Title 1","Title 2",
+                "Title 3","Title 4",
+                "Title 5",
+        };
+
+        String[] subtitle ={
+                "Sub Title 1","Sub Title 2",
+                "Sub Title 3","Sub Title 4",
+                "Sub Title 5",
+        };
+
+        Integer[] imgid={
+                R.drawable.abcd,R.drawable.abcd,
+                R.drawable.abcd,R.drawable.abcd,
+                R.drawable.abcd,
+        };
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
-        final ArrayList<Item> arrayList = new ArrayList<Item>();
 
-        arrayList.add(new Item(R.drawable.abcd, "1", "One"));
-        arrayList.add(new Item(R.drawable.abcd, "2", "Two"));
-        arrayList.add(new Item(R.drawable.abcd, "3", "Three"));
-        arrayList.add(new Item(R.drawable.abcd, "4", "Four"));
-        arrayList.add(new Item(R.drawable.abcd, "5", "Five"));
-        arrayList.add(new Item(R.drawable.abcd, "6", "Six"));
-        arrayList.add(new Item(R.drawable.abcd, "7", "Seven"));
-        arrayList.add(new Item(R.drawable.abcd, "8", "Eight"));
-        arrayList.add(new Item(R.drawable.abcd, "9", "Nine"));
-        arrayList.add(new Item(R.drawable.abcd, "10", "Ten"));
-        arrayList.add(new Item(R.drawable.abcd, "11", "Eleven"));
-        arrayList.add(new Item(R.drawable.abcd, "12", "Twelve"));
-        arrayList.add(new Item(R.drawable.abcd, "13", "Thirteen"));
-        arrayList.add(new Item(R.drawable.abcd, "14", "Fourteen"));
-        arrayList.add(new Item(R.drawable.abcd, "15", "Fifteen"));
+        ItemAdapter adapter=new ItemAdapter(this, maintitle, subtitle,imgid);
+        list=(ListView)findViewById(R.id.list);
+        list.setAdapter(adapter);
 
 
-        ItemAdapter itemArrayAdapter = new ItemAdapter(this, arrayList);
-        ListView itemListView = findViewById(R.layout.custom_list_view);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-        itemListView.setAdapter(itemArrayAdapter);
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // TODO Auto-generated method stub
+                if(position == 0) {
+                    //code specific to first list item
+                    Toast.makeText(getApplicationContext(),"Place Your First Option Code",Toast.LENGTH_SHORT).show();
+                }
 
-    }
+                else if(position == 1) {
+                    //code specific to 2nd list item
+                    Toast.makeText(getApplicationContext(),"Place Your Second Option Code",Toast.LENGTH_SHORT).show();
+                }
+
+                else if(position == 2) {
+
+                    Toast.makeText(getApplicationContext(),"Place Your Third Option Code",Toast.LENGTH_SHORT).show();
+                }
+                else if(position == 3) {
+
+                    Toast.makeText(getApplicationContext(),"Place Your Forth Option Code",Toast.LENGTH_SHORT).show();
+                }
+                else if(position == 4) {
+
+                    Toast.makeText(getApplicationContext(),"Place Your Fifth Option Code",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        }
 }

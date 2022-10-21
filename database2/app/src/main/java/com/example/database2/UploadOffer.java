@@ -57,7 +57,7 @@ public class UploadOffer extends AppCompatActivity {
                     // else call the method to add
                     // data to our database.
                     //TODO
-                    addDatatoFirebase(name, phone, address);
+                    //addDatatoFirebase(name, phone, address);
                 }
             }
         });

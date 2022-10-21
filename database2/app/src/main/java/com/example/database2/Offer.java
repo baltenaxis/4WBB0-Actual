@@ -5,7 +5,6 @@ public class Offer {
     private String Fooddescription;
     private String Availability;
 
-    public Offer(){
         public String getFoodname() {
             return Foodname;
         }
@@ -29,6 +28,6 @@ public class Offer {
         public void setAvailability(String Availability) {
             this.Availability = Availability;
         }
-    }
+
 
 }

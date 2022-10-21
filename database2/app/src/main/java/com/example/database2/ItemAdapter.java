@@ -1,6 +1,6 @@
 package com.example.database2;
+import android.app.Activity;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,36 +8,37 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+public class ItemAdapter extends ArrayAdapter<String> {
 
-import java.util.ArrayList;
+    private final Activity context;
+    private final String[] maintitle;
+    private final String[] subtitle;
+    private final Integer[] imgid;
 
-public class ItemAdapter extends ArrayAdapter<Item> {
-    public ItemAdapter(@NonNull Context context, ArrayList<Item> arrayList){
-        super(context,0,arrayList);
+    public ItemAdapter(Activity context, String[] maintitle,String[] subtitle, Integer[] imgid) {
+        super(context, R.layout.custom_list_view, maintitle);
+        // TODO Auto-generated constructor stub
+
+        this.context=context;
+        this.maintitle=maintitle;
+        this.subtitle=subtitle;
+        this.imgid=imgid;
+
     }
-    @NonNull
-    @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent){
-        View currentItemView = convertView;
-        // of the recyclable view is null then inflate the custom layout for the same
-        if (currentItemView == null) {
-            currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.custom_list_view, parent, false);
-        }
-        Item currentItemPosition = getItem(position);
-        ImageView itemImage = currentItemView.findViewById(R.id.imageView);
-        assert currentItemPosition != null;
-        itemImage.setImageResource(currentItemPosition.getItemImageId());
 
-        // then according to the position of the view assign the desired TextView 1 for the same
-        TextView textView1 = currentItemView.findViewById(R.id.textView1);
-        textView1.setText(currentItemPosition.getItemInDigit());
+    public View getView(int position,View view,ViewGroup parent) {
+        LayoutInflater inflater=context.getLayoutInflater();
+        View rowView=inflater.inflate(R.layout.custom_list_view, null,true);
 
-        // then according to the position of the view assign the desired TextView 2 for the same
-        TextView textView2 = currentItemView.findViewById(R.id.textView2);
-        textView2.setText(currentItemPosition.getItemInText());
+        TextView titleText = (TextView) rowView.findViewById(R.id.title);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
+        TextView subtitleText = (TextView) rowView.findViewById(R.id.subtitle);
 
-        // then return the recyclable view
-        return currentItemView;
-    }
+        titleText.setText(maintitle[position]);
+        imageView.setImageResource(imgid[position]);
+        subtitleText.setText(subtitle[position]);
+
+        return rowView;
+
+    };
 }

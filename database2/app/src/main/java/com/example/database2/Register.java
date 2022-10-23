@@ -13,6 +13,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -60,6 +61,15 @@ public class Register extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
+
+        ImageButton gobacktowelcome=findViewById(R.id.goBackWelcome);
+        gobacktowelcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentgoback = new Intent(Register.this, Welcome.class);
+                startActivity(intentgoback);
+            }
+        });
 
         //show hide password
         ImageView imageViewShowHidePsw = findViewById(R.id.imageView_show_hide_psw);

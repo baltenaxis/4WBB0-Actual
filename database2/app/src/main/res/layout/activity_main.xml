@@ -4,34 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/mainpage"
     tools:context=".Mainpage">
 
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="510dp"
-        android:layout_height="747dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/main" />
-
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="214dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="226dp"
+        android:layout_height="73dp"
 
-        android:layout_marginEnd="101dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="What would you like to do today?"
+        android:layout_marginTop="184dp"
+        android:layout_marginBottom="474dp"
+        android:fontFamily="@font/montserrat_black"
+        android:text="What would you like to do?"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="17sp"
+        android:textColor="#164345"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="285dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="356dp"
+        android:fontFamily="@font/montserrat_black"
+        android:text="OFFERS"
+        android:textColor="#26F28123"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,18 +46,37 @@
     <Button
         android:id="@+id/seeoffers"
         android:layout_width="198dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="109dp"
-
-        android:backgroundTint="#164345"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="285dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="398dp"
+        android:background="@drawable/custom_button_1"
         android:fontFamily="@font/montserrat_light"
-        android:shadowColor="#000000"
+        android:padding="10dp"
         android:shadowDx="10"
         android:shadowDy="12"
         android:text="See Offers"
-        android:textColor="@android:color/white"
+        android:textColor="#164345"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="398dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="243dp"
+        android:fontFamily="@font/montserrat_black"
+        android:text="LOCKER"
+        android:textColor="#26D34E24"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -58,12 +84,18 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="198dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="384dp"
-        android:layout_marginEnd="109dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="398dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="285dp"
+        android:background="@drawable/custom_button_1"
         android:fontFamily="@font/montserrat_light"
+        android:padding="10dp"
         android:text="Scan Locker"
+        android:textColor="#164345"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +105,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="205dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="165dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.348"
+        app:srcCompat="@drawable/logo" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_button_1"
+        android:backgroundTint="#164345"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Log out"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

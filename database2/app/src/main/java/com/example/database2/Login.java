@@ -58,6 +58,17 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        Button cheat=findViewById(R.id.button3);
+        cheat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cheating = new Intent(Login.this, Mainpage.class);
+                startActivity(cheating);
+            }
+        });
+
+
+
         //show hide password
         ImageView imageViewShowHidePsw = findViewById(R.id.imageView_show_hide_psw);
         imageViewShowHidePsw.setImageResource(R.drawable.hide_password_logo);

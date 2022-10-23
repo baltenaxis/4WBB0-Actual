@@ -31,7 +31,7 @@
         android:layout_marginEnd="347dp"
         android:layout_marginBottom="672dp"
         android:backgroundTint="#0FFFFFFF"
-        android:tint="#000000"
+        app:tint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

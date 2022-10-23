@@ -80,43 +80,41 @@
     <ImageView
         android:id="@+id/imageView_show_hide_psw"
         android:layout_width="47dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/linkForgotPassword"
+        android:layout_height="96dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="115dp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/password"
-        app:layout_constraintTop_toTopOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/linkForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/montserrat_medium"
         android:text="Forgot Password?"
         android:textColor="@color/black"
-        android:textSize="13dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
         android:id="@+id/loginBtn"
-        android:layout_width="179dp"
+        android:layout_width="181dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="149dp"
         android:background="@drawable/custom_button_2"
         android:fontFamily="@font/montserrat_light"
         android:padding="10dp"
         android:text="LOG-IN"
         android:textColor="@color/white"
         android:textSize="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/createtext"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/createtext"
@@ -140,12 +138,12 @@
         android:layout_marginTop="9dp"
         android:layout_marginBottom="679dp"
         android:backgroundTint="#00164345"
-        app:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        app:tint="#FFFFFF" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -157,6 +155,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/createtext"
         app:layout_constraintTop_toBottomOf="@+id/createtext" />
+
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="39dp"
+        android:background="@drawable/custom_button_2"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Cheat"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

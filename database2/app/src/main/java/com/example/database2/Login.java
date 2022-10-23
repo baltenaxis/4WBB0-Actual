@@ -123,7 +123,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             if (fAuth.getCurrentUser().isEmailVerified()) {
                                 Toast.makeText(getApplicationContext(), "Log in successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), Welcome.class));
+                                startActivity(new Intent(getApplicationContext(), Mainpage.class));
                             } else{
                                 Toast.makeText(getApplicationContext(), "Please verify your email address", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);

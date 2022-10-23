@@ -111,12 +111,12 @@ public class Register extends AppCompatActivity {
             }
         });
 
-
-        if (fAuth.getCurrentUser() != null && fAuth.getCurrentUser().isEmailVerified()) {
+       //TODO
+       /* if (fAuth.getCurrentUser() != null && fAuth.getCurrentUser().isEmailVerified()) {
             mLoginBtn.setText(fAuth.getCurrentUser().getDisplayName());
             startActivity(new Intent(getApplicationContext(), Login.class));
             finish();
-        }
+        } */
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

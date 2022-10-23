@@ -19,6 +19,13 @@ public class Welcome extends AppCompatActivity {
         mLoginPageBtn = findViewById(R.id.loginPageBtn);
         mRegisterPageBtn = findViewById(R.id.registerPageBtn);
 
+        mRegisterPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Register.class));
+            }
+        });
+
         mLoginPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,11 +33,6 @@ public class Welcome extends AppCompatActivity {
             }
         });
 
-        mRegisterPageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Register.class));
-            }
-        });
+
     }
 }

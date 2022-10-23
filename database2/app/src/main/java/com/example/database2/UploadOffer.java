@@ -32,7 +32,7 @@ public class UploadOffer extends AppCompatActivity {
         mfname=findViewById(R.id.foodname);
         mfdescription=findViewById(R.id.description);
         mfdate=findViewById(R.id.time);
-        upload_button=findViewById(R.id.buttonupload);
+        upload_button=findViewById(R.id.button4);
 
         fstore=FirebaseFirestore.getInstance();
 

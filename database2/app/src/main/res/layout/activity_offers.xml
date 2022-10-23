@@ -4,73 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/postoffers"
     android:foregroundTint="#00FFFFFF"
     tools:context=".Offers">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="462dp"
-        android:layout_height="202dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="522dp"
-        android:foregroundTint="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/buton2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="240dp"
         android:layout_height="45dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="106dp"
-        android:layout_marginBottom="678dp"
-        android:fontFamily="@font/montserrat_medium"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/montserrat_black"
         android:text="Offers"
-        android:textColor="@color/black"
+        android:textColor="#164345"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toEndOf="@+id/goBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.091" />
 
     <ImageButton
         android:id="@+id/goBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="679dp"
+        android:layout_marginStart="4dp"
         android:backgroundTint="#0FFFFFFF"
-        android:tint="#000000"
+        android:tint="#164345"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.093"
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/montserrat_black"
+        android:text="POST"
+        android:textColor="#1A164345"
+        android:textSize="60dp"
+        app:layout_constraintStart_toStartOf="@+id/goBack"
+        app:layout_constraintTop_toBottomOf="@+id/goBack" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:fontFamily="@font/montserrat_black"
+        android:text="FIND"
+        android:textColor="#1A164345"
+        android:textSize="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonpost" />
 
     <Button
         android:id="@+id/buttonpost"
-        android:layout_width="190dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="591dp"
-        android:background="@android:color/transparent"
-        android:backgroundTint="#00FFFFFF"
-        android:fontFamily="@font/montserrat_light"
-        android:foreground="@android:color/transparent"
-        android:text="  Post offer"
-        android:textAlignment="textStart"
-        android:textColor="#ffffffff"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="166dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="43dp"
+        android:background="@drawable/custom_button_5"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Post offer"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"></ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

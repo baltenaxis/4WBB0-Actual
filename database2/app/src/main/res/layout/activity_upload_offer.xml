@@ -103,16 +103,39 @@
         tools:layout_editor_absoluteY="146dp" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="68dp"
+        android:id="@+id/postpic"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="27dp"
         android:backgroundTint="#164345"
-        android:fontFamily="@font/montserrat_light"
-        android:padding="15dp"
-        android:text="Post offer"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="right"
+        android:padding="20dp"
+        android:text="Post offer   "
         android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintVertical_bias="0.063" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_button_1"
+        android:drawableLeft="@drawable/upload1"
+        android:drawableTint="#164345"
+
+        android:fontFamily="@font/montserrat_light"
+        android:padding="10dp"
+        android:text="Upload picture"
+        android:textColor="@color/black"
+        android:textSize="13dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time" />
 

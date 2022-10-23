@@ -38,6 +38,15 @@ public class UploadOffer extends AppCompatActivity {
 
         moffer=new Offer();
 
+      /*  Button picture = findViewById(R.id.postpic);
+        picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageChooser();
+            }
+        }); TODO  */
+
+
         upload_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

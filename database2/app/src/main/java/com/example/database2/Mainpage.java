@@ -23,6 +23,15 @@ public class Mainpage extends AppCompatActivity {
 
             }
         });
+        
+        Button scanlocker = findViewById(R.id.button2);
+        scanlocker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(Mainpage.this, Mainpage.class);
+                startActivity(intent2);
+            }
+        });
 
         Button logout= findViewById(R.id.button);
         logout.setOnClickListener(new View.OnClickListener() {

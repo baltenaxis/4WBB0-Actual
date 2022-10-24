@@ -1,38 +1,37 @@
 package com.example.database2;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class Mainpage extends AppCompatActivity {
+public class PreLogOut extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pre_log_out);
 
-        Button seeoffers = findViewById(R.id.seeoffers);
-        seeoffers.setOnClickListener(new View.OnClickListener() {
+        Button yes = findViewById(R.id.button1);
+        yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Mainpage.this, Offers.class);
+                Intent intent = new Intent(PreLogOut.this, Welcome.class);
                 startActivity(intent);
 
             }
         });
 
-        Button logout= findViewById(R.id.button);
-        logout.setOnClickListener(new View.OnClickListener() {
+        Button no = findViewById(R.id.button);
+        no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(Mainpage.this, PreLogOut.class);
+                Intent intent2 = new Intent(PreLogOut.this, Mainpage.class);
                 startActivity(intent2);
 
             }
         });
     }
 }
-

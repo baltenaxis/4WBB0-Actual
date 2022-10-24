@@ -12,6 +12,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -47,6 +48,26 @@ public class Login extends AppCompatActivity {
         mLoginBtn = findViewById(R.id.loginBtn);
         mCreateBtn = findViewById(R.id.createtext);
         mLinkForgotPassword = findViewById(R.id.linkForgotPassword);
+
+        ImageButton gobacktowelcome=findViewById(R.id.goBackWelcome);
+        gobacktowelcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentgoback = new Intent(Login.this, Welcome.class);
+                startActivity(intentgoback);
+            }
+        });
+
+        Button cheat=findViewById(R.id.button3);
+        cheat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cheating = new Intent(Login.this, Mainpage.class);
+                startActivity(cheating);
+            }
+        });
+
+
 
         //show hide password
         ImageView imageViewShowHidePsw = findViewById(R.id.imageView_show_hide_psw);
@@ -113,7 +134,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             if (fAuth.getCurrentUser().isEmailVerified()) {
                                 Toast.makeText(getApplicationContext(), "Log in successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), Welcome.class));
+                                startActivity(new Intent(getApplicationContext(), Mainpage.class));
                             } else{
                                 Toast.makeText(getApplicationContext(), "Please verify your email address", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);

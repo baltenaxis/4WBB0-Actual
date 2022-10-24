@@ -6,25 +6,39 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 public class SplashScreen extends AppCompatActivity {
+
+    private static int SPLASH_SCREEN = 2000;
+    //Variable
+    Animation bottomAnim;
+    ImageView image;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_splash_screen);
+
+        bottomAnim= AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
+
+        image = findViewById(R.id.imageView5);
+        image.setAnimation(bottomAnim);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                DatabaseHandler a = new DatabaseHandler(getApplicationContext());
-                a.readItems(1);
-                //startActivity(new Intent(getApplicationContext(),InventoryHandler.class));
-
+                Intent intent = new Intent(SplashScreen.this, Welcome.class);
+                startActivity(intent);
+                finish();
             }
-        }, 4000);
+        },SPLASH_SCREEN);
 
     }
-
 
 }

@@ -28,7 +28,7 @@ public class Mainpage extends AppCompatActivity {
         scanlocker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(Mainpage.this, Mainpage.class);
+                Intent intent2 = new Intent(Mainpage.this, QRHandler.class);
                 startActivity(intent2);
             }
         });

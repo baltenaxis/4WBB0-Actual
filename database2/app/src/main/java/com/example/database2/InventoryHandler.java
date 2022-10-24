@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class InventoryHandler extends AppCompatActivity {
     ListView Inventory;
@@ -35,15 +36,29 @@ public class InventoryHandler extends AppCompatActivity {
                 R.drawable.abcd,R.drawable.abcd,
                 R.drawable.abcd,
         };
-
+        DatabaseHandler a = new DatabaseHandler(getApplicationContext());
+        HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+        ArrayList<String> brat = hashMap.get("names");
+        ArrayList<String> brat1 = hashMap.get("descriptions");
+        ArrayList<String> brat2 = hashMap.get("images");
+        System.out.println(brat.get(0));
+        System.out.println(brat1.get(0));
+        System.out.println(brat2.get(0));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
-        ItemAdapter adapter=new ItemAdapter(this, maintitle, subtitle,imgid);
+
+        String[] kur2 = brat.toArray(new String[0]);
+
+        String[] kur4 = brat1.toArray(new String[0]);
+
+
+        String[] kur6 = new String[1];
+        ItemAdapter adapter=new ItemAdapter(this, kur2, kur4, kur6);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
 
-
+        System.out.println("maika ti2");
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

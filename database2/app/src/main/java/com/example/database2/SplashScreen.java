@@ -10,6 +10,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class SplashScreen extends AppCompatActivity {
 
     private static int SPLASH_SCREEN = 2000;
@@ -29,11 +33,15 @@ public class SplashScreen extends AppCompatActivity {
 
         image = findViewById(R.id.imageView5);
         image.setAnimation(bottomAnim);
-
+        DatabaseHandler a = new DatabaseHandler(getApplicationContext());
+        HashMap<String,ArrayList<String>> items1 = (HashMap<String, ArrayList<String>>) a.readItems(1);
+        /*ArrayList<Item> items2 = a.readItems(2);
+        ArrayList<Item> items3 = a.readItems(3);*/
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashScreen.this, Welcome.class);
+                intent.putExtra("kur",items1);
                 startActivity(intent);
                 finish();
             }

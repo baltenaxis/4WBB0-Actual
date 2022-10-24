@@ -79,4 +79,17 @@ public class DatabaseHandler {
         return items;
 
     }
+    public void uploadItem(String name, String description, String image, String lockerId){
+        DatabaseReference itemRef = database.getReference("Lockers").child(lockerId).child("Items").child(name);
+        itemRef.child("name").setValue(name);
+        itemRef.child("description").setValue(description);
+        itemRef.child("image").setValue(image);
+    }
+
+    public void uploadOffer(String name, String description, String availability, String lockerId){
+        DatabaseReference offerRef = database.getReference("Offers").child(lockerId).child("Items").child(name);
+        offerRef.child("name").setValue(name);
+        offerRef.child("description").setValue(description);
+        offerRef.child("availability").setValue(availability);
+    }
 }

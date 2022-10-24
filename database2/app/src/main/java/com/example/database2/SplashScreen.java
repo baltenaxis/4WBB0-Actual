@@ -40,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, Welcome.class);
+                Intent intent = new Intent(SplashScreen.this, Offers.class);
                 intent.putExtra("kur",items1);
                 startActivity(intent);
                 finish();

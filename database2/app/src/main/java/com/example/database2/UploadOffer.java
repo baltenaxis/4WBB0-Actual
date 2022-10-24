@@ -60,7 +60,7 @@ public class UploadOffer extends AppCompatActivity {
         mpostoffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DatabaseHandler a = new DatabaseHandler(getApplicationContext());
                 // getting text from our edittext fields.
                 String food_name = mfname.getText().toString();
                 String food_description = mfdescription.getText().toString();
@@ -73,10 +73,7 @@ public class UploadOffer extends AppCompatActivity {
                     // then show the below message.
                     Toast.makeText(UploadOffer.this, "Please add some data.", Toast.LENGTH_SHORT).show();
                 } else {
-                    // else call the method to add
-                    // data to our database.
-                    //TODO
-                    //addDatatoFirebase(name, phone, address);
+                    a.uploadOffer(food_name,food_description,food_availability,"1");
                 }
             }
         });

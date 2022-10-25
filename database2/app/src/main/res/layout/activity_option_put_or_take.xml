@@ -21,8 +21,8 @@
         android:id="@+id/imageView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="115dp"
-        android:layout_marginBottom="258dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="256dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/oavl" />
@@ -37,35 +37,76 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/oavl2" />
 
-    <Button
-        android:id="@+id/putfoodin"
+
+    <TextView
+        android:id="@+id/textView13"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="72dp"
-        android:backgroundTint="#00FFFFFF"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="277dp"
+        android:fontFamily="@font/montserrat_black"
+        android:gravity="center"
+        android:text="Place food in"
+        android:textColor="#164345"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/takefoodout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="102dp"
+        android:fontFamily="@font/montserrat_black"
+        android:gravity="center"
+        android:text="Take food out"
+        android:textColor="#164345"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/takefoodout"
+        app:layout_constraintStart_toStartOf="@+id/takefoodout"
+        app:layout_constraintTop_toBottomOf="@+id/putfoodin" />
+
+    <Button
+        android:id="@+id/putfoodin"
+        android:layout_width="257dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="296dp"
+        android:background="@drawable/custom_button_6"
         android:backgroundTintMode="multiply"
         android:fontFamily="@font/montserrat_black"
-        android:text="Place food in"
+        android:text="Place           food in"
         android:textAllCaps="false"
+        android:textColor="@color/white"
+
         android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/takefoodout"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
+        android:layout_width="305dp"
+        android:layout_height="0dp"
         android:layout_marginTop="80dp"
-        android:layout_marginEnd="47dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="84dp"
-        android:backgroundTint="#00FFFFFF"
+        android:background="@drawable/custom_button_6"
         android:backgroundTintMode="multiply"
         android:fontFamily="@font/montserrat_black"
-        android:text="Take food out"
+        android:text="Take                 food out"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.517" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

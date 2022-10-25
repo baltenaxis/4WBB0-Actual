@@ -1,230 +1,385 @@
 package com.example.database2;
 
-import android.annotation.SuppressLint;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Handler;
-import android.os.SystemClock;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.bluetooth.*;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
+import com.litesuits.bluetooth.LiteBleGattCallback;
+import com.litesuits.bluetooth.LiteBluetooth;
+import com.litesuits.bluetooth.conn.BleCharactCallback;
+import com.litesuits.bluetooth.conn.BleDescriptorCallback;
+import com.litesuits.bluetooth.conn.BleRssiCallback;
+import com.litesuits.bluetooth.conn.LiteBleConnector;
+import com.litesuits.bluetooth.exception.BleException;
+import com.litesuits.bluetooth.exception.hanlder.DefaultBleExceptionHandler;
+import com.litesuits.bluetooth.log.BleLog;
+import com.litesuits.bluetooth.scan.PeriodMacScanCallback;
+import com.litesuits.bluetooth.scan.PeriodScanCallback;
+import com.litesuits.bluetooth.utils.BluetoothUtil;
 
-import androidx.appcompat.app.AppCompatActivity;
+import java.util.Arrays;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.Set;
-import java.util.UUID;
+public class BluetoothHandler extends Activity {
 
-public class BluetoothHandler extends AppCompatActivity {
+    private static final String TAG = BluetoothHandler.class.getSimpleName();
 
-    private Handler mHandler; // Our main handler that will receive callback notifications
-    private ConnectedThread mConnectedThread; // bluetooth background worker thread to send and receive data
-    private BluetoothSocket mBTSocket = null; // bi-directional client-to-client data path
-    private ArrayAdapter<String> mBTArrayAdapter ;
-    private BluetoothAdapter mBTAdapter;
-    private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier
+    /**
+     * mac和服务uuid纯属测试，测试时请替换真实参数。
+     */
+    public String UUID_SERVICE = "6e400000-0000-0000-0000-000011112222";
 
+    public String UUID_CHAR_WRITE = "6e400001-0000-0000-0000-000011112222";
+    public String UUID_CHAR_READ = "6e400002-0000-0000-0000-000011112222";
 
-    // #defines for identifying shared types between calling functions
-    private final static int REQUEST_ENABLE_BT = 1; // used to identify adding bluetooth names
-    private final static int MESSAGE_READ = 2; // used in bluetooth handler to identify message update
-    private final static int CONNECTING_STATUS = 3; // used in bluetooth handler to identify message status
+    public String UUID_DESCRIPTOR = "00002902-0000-1000-8000-00805f9b34fb";
+    public String UUID_DESCRIPTOR_WRITE = "00002902-0000-1000-8000-00805f9b34fb";
+    public String UUID_DESCRIPTOR_READ = "00002902-0000-1000-8000-00805f9b34fb";
 
+    private static int TIME_OUT_SCAN = 10000;
+    private static int TIME_OUT_OPERATION = 5000;
+    private Activity activity;
+    /**
+     * 蓝牙主要操作对象，建议单例。
+     */
+    private static LiteBluetooth liteBluetooth;
+    /**
+     * 默认异常处理器
+     */
+    private DefaultBleExceptionHandler bleExceptionHandler;
+    /**
+     * mac和服务uuid纯属测试，测试时请替换真实参数。
+     */
+    private static String MAC = "00:00:00:AA:AA:AA";
 
+    /**
+     * Called when the activity is first created.
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBTArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-        mBTAdapter = BluetoothAdapter.getDefaultAdapter();
-        mHandler = new Handler() {
-            @SuppressLint("HandlerLeak")
-            public void handleMessage(android.os.Message msg) {
-                if (msg.what == MESSAGE_READ) {
-                    String readMessage = null;
-                    try {
-                        readMessage = new String((byte[]) msg.obj, "UTF-8");
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-                }
+        setContentView(R.layout.activity_bluetooth);
+        activity = this;
+        if (liteBluetooth == null) {
+            liteBluetooth = new LiteBluetooth(activity);
+        }
+        liteBluetooth.enableBluetoothIfDisabled(activity, 1);
+        bleExceptionHandler = new DefaultBleExceptionHandler(this);
+        scanAndConnect();
+    }
+
+    /**
+     * scan devices for a while
+     */
+    private void scanDevicesPeriod() {
+        liteBluetooth.startLeScan(new PeriodScanCallback(TIME_OUT_SCAN) {
+            @Override
+            public void onScanTimeout() {
+                dialogShow(TIME_OUT_SCAN + " Millis Scan Timeout! ");
             }
+
+            @Override
+            public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
+                BleLog.i(TAG, "device: " + device.getName() + "  mac: " + device.getAddress()
+                        + "  rssi: " + rssi + "  scanRecord: " + Arrays.toString(scanRecord));
+            }
+        });
+    }
+
+    /**
+     * scan a specified device for a while
+     */
+    private void scanSpecifiedDevicePeriod() {
+        liteBluetooth.startLeScan(new PeriodMacScanCallback(MAC, TIME_OUT_SCAN) {
+
+            @Override
+            public void onScanTimeout() {
+                dialogShow(TIME_OUT_SCAN + " Millis Scan Timeout!  Device Not Found! ");
+            }
+
+            @Override
+            public void onDeviceFound(BluetoothDevice device, int rssi, byte[] scanRecord) {
+                dialogShow(" Device Found " + device.getName() + " MAC: " + device.getAddress()
+                        + " \n RSSI: " + rssi + " records:" + Arrays.toString(scanRecord));
+            }
+        });
+    }
+
+    /**
+     * scan and connect to device
+     */
+    private void scanAndConnect() {
+        System.out.println("kur");
+        liteBluetooth.scanAndConnect(MAC, false, new LiteBleGattCallback() {
+
+            @Override
+            public void onConnectSuccess(BluetoothGatt gatt, int status) {
+                // discover services !
+                gatt.discoverServices();
+            }
+
+            @Override
+            public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+                BluetoothUtil.printServices(gatt);
+                dialogShow(MAC + " Services Discovered SUCCESS !");
+            }
+
+            @Override
+            public void onConnectFailure(BleException exception) {
+                bleExceptionHandler.handleException(exception);
+                dialogShow(MAC + " Services Discovered FAILURE !");
+            }
+        });
+    }
+
+    /**
+     * scan first, then connect
+     */
+    private void scanThenConnect() {
+        liteBluetooth.startLeScan(new PeriodMacScanCallback(MAC, TIME_OUT_SCAN) {
+
+            @Override
+            public void onScanTimeout() {
+                dialogShow(TIME_OUT_SCAN + "毫秒扫描结束，未发现设备");
+            }
+
+            @Override
+            public void onDeviceFound(final BluetoothDevice device, int rssi, byte[] scanRecord) {
+                Toast.makeText(activity, "发现 " + device.getAddress() + " 正在连接...", Toast.LENGTH_LONG).show();
+                liteBluetooth.connect(device, false, new LiteBleGattCallback() {
+
+                    @Override
+                    public void onConnectSuccess(BluetoothGatt gatt, int status) {
+                        gatt.discoverServices();
+                    }
+
+                    @Override
+                    public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+                        BluetoothUtil.printServices(gatt);
+                    }
+
+                    @Override
+                    public void onConnectFailure(BleException exception) {
+                        bleExceptionHandler.handleException(exception);
+                        dialogShow(device.getAddress() + " 设备连接失败");
+                    }
+                });
+
+            }
+        });
+    }
+
+    /**
+     * get state
+     */
+    private void getBluetoothState() {
+        BleLog.i(TAG, "liteBluetooth.getConnectionState: " + liteBluetooth.getConnectionState());
+        BleLog.i(TAG, "liteBluetooth isInScanning: " + liteBluetooth.isInScanning());
+        BleLog.i(TAG, "liteBluetooth isConnected: " + liteBluetooth.isConnected());
+        BleLog.i(TAG, "liteBluetooth isServiceDiscoered: " + liteBluetooth.isServiceDiscoered());
+        if (liteBluetooth.getConnectionState() >= LiteBluetooth.STATE_CONNECTING) {
+            BleLog.i(TAG, "lite bluetooth is in connecting or connected");
+        }
+        if (liteBluetooth.getConnectionState() == LiteBluetooth.STATE_SERVICES_DISCOVERED) {
+            BleLog.i(TAG, "lite bluetooth is in connected, services have been found");
+        }
+    }
+
+    /**
+     * add(remove) new callback to an existing connection.
+     * One Device, One {@link LiteBluetooth}.
+     * But one device( {@link LiteBluetooth}) can add many callback {@link BluetoothGattCallback}
+     *
+     * {@link LiteBleGattCallback} is a extension of {@link BluetoothGattCallback}
+     */
+    private void addNewCallbackToOneConnection() {
+        BluetoothGattCallback liteCallback = new BluetoothGattCallback() {
+            @Override
+            public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {}
+
+            @Override
+            public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
+            }
+
+            @Override
+            public void onCharacteristicWrite(BluetoothGatt gatt,
+                                              BluetoothGattCharacteristic characteristic, int status) {
+            }
+
+            @Override
+            public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status) {}
         };
-        try {
-            connect();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-    }
-    private void bluetoothOn(){
-        if (!mBTAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-
-        }
-        System.out.println("yes");
-    }
-
-    // Enter here after user selects "yes" or "no" to enabling radio
-
-    private void bluetoothOff(){
-        mBTAdapter.disable(); // turn off
-    }
-
-    private void discover(){
-        // Check if the device is already discovering
-        if(mBTAdapter.isDiscovering()){
-            mBTAdapter.cancelDiscovery();
-        }
-        else{
-            if(mBTAdapter.isEnabled()) {
-                mBTArrayAdapter.clear(); // clear items
-                mBTAdapter.startDiscovery();
-                registerReceiver(blReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-            }
+        if (liteBluetooth.isConnectingOrConnected()) {
+            liteBluetooth.addGattCallback(liteCallback);
+            liteBluetooth.removeGattCallback(liteCallback);
         }
     }
 
-    final BroadcastReceiver blReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if(BluetoothDevice.ACTION_FOUND.equals(action)){
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                // add the name to the list
-                mBTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
-                mBTArrayAdapter.notifyDataSetChanged();
-            }
-        }
-    };
-
-
-
-    private void connect() throws IOException {
-        if (!mBTAdapter.isEnabled()) {
-            Toast.makeText(getBaseContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        System.out.println("check 1");
-        //TODO
-        // Get the device MAC address, which is the last 17 chars in the View
-        final String address = "F4-E9-5A-95-57-B4";
-        final String name = "kur";
-
-        // Spawn a new thread to avoid blocking the GUI one
-
-        boolean fail = false;
-        System.out.println("check 2");
-        BluetoothDevice device = mBTAdapter.getRemoteDevice(address);
-
-        try {
-            mBTSocket = createBluetoothSocket(device);
-        } catch (IOException e) {
-            fail = true;
-            Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_SHORT).show();
-        }
-        // Establish the Bluetooth socket connection.
-        try {
-            mBTSocket.connect();
-            System.out.println("check 3");
-        } catch (IOException e) {
-            try {
-                fail = true;
-                mBTSocket.close();
-                mHandler.obtainMessage(CONNECTING_STATUS, -1, -1)
-                        .sendToTarget();
-                System.out.println("check 4");
-            } catch (IOException e2) {
-                //insert code to deal with this
-                Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_SHORT).show();
-            }
-        }
-        if (!fail) {
-            System.out.println("check 5");
-            mConnectedThread = new ConnectedThread(mBTSocket);
-            mConnectedThread.start();
-
-            mHandler.obtainMessage(CONNECTING_STATUS, 1, -1, name)
-                    .sendToTarget();
-        }
-
+    /**
+     * refresh bluetooth device cache
+     */
+    private void refreshDeviceCache() {
+        liteBluetooth.refreshDeviceCache();
     }
 
-    private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
-        return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
-        //creates secure outgoing connection with BT device using UUID
+
+    /**
+     * close connection
+     */
+    private void closeBluetoothGatt() {
+        if (liteBluetooth.isConnectingOrConnected()) {
+            liteBluetooth.closeBluetoothGatt();
+        }
     }
 
-    private class ConnectedThread extends Thread {
-        private final BluetoothSocket mmSocket;
-        private final InputStream mmInStream;
-        private final OutputStream mmOutStream;
-
-        public ConnectedThread(BluetoothSocket socket) {
-            mmSocket = socket;
-            InputStream tmpIn = null;
-            OutputStream tmpOut = null;
-
-            // Get the input and output streams, using temp objects because
-            // member streams are final
-            try {
-                tmpIn = socket.getInputStream();
-                tmpOut = socket.getOutputStream();
-            } catch (IOException e) { }
-
-            mmInStream = tmpIn;
-            mmOutStream = tmpOut;
-        }
-
-        public void run() {
-            byte[] buffer = new byte[1024];  // buffer store for the stream
-            int bytes; // bytes returned from read()
-            // Keep listening to the InputStream until an exception occurs
-            while (true) {
-                try {
-                    // Read from the InputStream
-                    bytes = mmInStream.available();
-                    if(bytes != 0) {
-                        SystemClock.sleep(100); //pause and wait for rest of data. Adjust this depending on your sending speed.
-                        bytes = mmInStream.available(); // how many bytes are ready to be read?
-                        bytes = mmInStream.read(buffer, 0, bytes); // record how many bytes we actually read
-                        mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
-                                .sendToTarget(); // Send the obtained bytes to the UI activity
+    /**
+     * write data to characteristic
+     */
+    private void writeDataToCharacteristic() {
+        LiteBleConnector connector = liteBluetooth.newBleConnector();
+        connector.withUUIDString(UUID_SERVICE, UUID_CHAR_WRITE, null)
+                .writeCharacteristic(new byte[]{1, 2, 3}, new BleCharactCallback() {
+                    @Override
+                    public void onSuccess(BluetoothGattCharacteristic characteristic) {
+                        BleLog.i(TAG, "Write Success, DATA: " + Arrays.toString(characteristic.getValue()));
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
 
-                    break;
-                }
-            }
-        }
+                    @Override
+                    public void onFailure(BleException exception) {
+                        BleLog.i(TAG, "Write failure: " + exception);
+                        bleExceptionHandler.handleException(exception);
+                    }
+                });
+    }
 
-        /* Call this from the main activity to send data to the remote device */
-        public void write(String input) {
-            byte[] bytes = input.getBytes();           //converts entered String into bytes
-            try {
-                mmOutStream.write(bytes);
-            } catch (IOException e) { }
-        }
+    /**
+     * write data to descriptor
+     */
+    private void writeDataToDescriptor() {
+        LiteBleConnector connector = liteBluetooth.newBleConnector();
+        connector.withUUIDString(UUID_SERVICE, UUID_CHAR_WRITE, UUID_DESCRIPTOR_WRITE)
+                .writeDescriptor(new byte[]{1, 2, 3}, new BleDescriptorCallback() {
+                    @Override
+                    public void onSuccess(BluetoothGattDescriptor descriptor) {
+                        BleLog.i(TAG, "Write Success, DATA: " + Arrays.toString(descriptor.getValue()));
+                    }
 
-        /* Call this from the main activity to shutdown the connection */
-        public void cancel() {
-            try {
-                mmSocket.close();
-            } catch (IOException e) { }
-        }
+                    @Override
+                    public void onFailure(BleException exception) {
+                        BleLog.i(TAG, "Write failure: " + exception);
+                        bleExceptionHandler.handleException(exception);
+                    }
+                });
+    }
+
+    /**
+     * read data from characteristic
+     */
+    private void readDataFromCharacteristic() {
+        LiteBleConnector connector = liteBluetooth.newBleConnector();
+        connector.withUUIDString(UUID_SERVICE, UUID_CHAR_READ, null)
+                .readCharacteristic(new BleCharactCallback() {
+                    @Override
+                    public void onSuccess(BluetoothGattCharacteristic characteristic) {
+                        BleLog.i(TAG, "Read Success, DATA: " + Arrays.toString(characteristic.getValue()));
+                    }
+
+                    @Override
+                    public void onFailure(BleException exception) {
+                        BleLog.i(TAG, "Read failure: " + exception);
+                        bleExceptionHandler.handleException(exception);
+                    }
+                });
+    }
+
+    /**
+     * read data from descriptor
+     */
+    private void readDataFromDescriptor() {
+        LiteBleConnector connector = liteBluetooth.newBleConnector();
+        connector.withUUIDString(UUID_SERVICE, UUID_CHAR_READ, UUID_DESCRIPTOR_READ)
+                .readDescriptor(new BleDescriptorCallback() {
+                    @Override
+                    public void onSuccess(BluetoothGattDescriptor descriptor) {
+                        BleLog.i(TAG, "Read Success, DATA: " + Arrays.toString(descriptor.getValue()));
+                    }
+
+                    @Override
+                    public void onFailure(BleException exception) {
+                        BleLog.i(TAG, "Read failure : " + exception);
+                        bleExceptionHandler.handleException(exception);
+                    }
+                });
+    }
+
+    /**
+     * enble notification of characteristic
+     */
+    private void enableNotificationOfCharacteristic() {
+        LiteBleConnector connector = liteBluetooth.newBleConnector();
+        connector.withUUIDString(UUID_SERVICE, UUID_CHAR_READ, null)
+                .enableCharacteristicNotification(new BleCharactCallback() {
+                    @Override
+                    public void onSuccess(BluetoothGattCharacteristic characteristic) {
+                        BleLog.i(TAG, "Notification characteristic Success, DATA: " + Arrays
+                                .toString(characteristic.getValue()));
+                    }
+
+                    @Override
+                    public void onFailure(BleException exception) {
+                        BleLog.i(TAG, "Notification characteristic failure: " + exception);
+                        bleExceptionHandler.handleException(exception);
+                    }
+                });
+    }
+
+    /**
+     * enable notification of descriptor
+     */
+    private void enableNotificationOfDescriptor() {
+        LiteBleConnector connector = liteBluetooth.newBleConnector();
+        connector.withUUIDString(UUID_SERVICE, UUID_CHAR_READ, UUID_DESCRIPTOR_READ)
+                .enableDescriptorNotification(new BleDescriptorCallback() {
+                    @Override
+                    public void onSuccess(BluetoothGattDescriptor descriptor) {
+                        BleLog.i(TAG,
+                                "Notification descriptor Success, DATA: " + Arrays.toString(descriptor.getValue()));
+                    }
+
+                    @Override
+                    public void onFailure(BleException exception) {
+                        BleLog.i(TAG, "Notification descriptor failure : " + exception);
+                        bleExceptionHandler.handleException(exception);
+                    }
+                });
+    }
+
+
+    /**
+     * read RSSI of device
+     */
+    public void readRssiOfDevice() {
+        liteBluetooth.newBleConnector()
+                .readRemoteRssi(new BleRssiCallback() {
+                    @Override
+                    public void onSuccess(int rssi) {
+                        BleLog.i(TAG, "Read Success, rssi: " + rssi);
+                    }
+
+                    @Override
+                    public void onFailure(BleException exception) {
+                        BleLog.i(TAG, "Read failure : " + exception);
+                        bleExceptionHandler.handleException(exception);
+                    }
+                });
+    }
+
+    public void dialogShow(String msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Lite BLE");
+        builder.setMessage(msg);
+        builder.setPositiveButton("OK", null);
+        builder.show();
     }
 }

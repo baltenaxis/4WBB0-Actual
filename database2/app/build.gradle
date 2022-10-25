@@ -38,6 +38,7 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
 
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation files('libs\\lite-ble-0.9.2.jar')
 
     //camera imports
     def camerax_version = "1.0.0-beta07"

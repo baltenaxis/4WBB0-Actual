@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +48,9 @@ public class QRHandler extends AppCompatActivity {
                         public void onClick(View v) {
                                 Toast.makeText(getApplicationContext(), qrCode, Toast.LENGTH_SHORT).show();
                                 Log.i(QRHandler.class.getSimpleName(), "QR Code Found: " + qrCode);
+                                Intent intent = new Intent(QRHandler.this, OptionPutOrTake.class);
+                                startActivity(intent);
+                                
                         }
                 });
 

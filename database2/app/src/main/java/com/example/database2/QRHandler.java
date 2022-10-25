@@ -24,6 +24,8 @@ import android.widget.Toast;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 public class QRHandler extends AppCompatActivity {
@@ -40,6 +42,16 @@ public class QRHandler extends AppCompatActivity {
                 setContentView(R.layout.activity_qr);
 
                 previewView = findViewById(R.id.activity_main_previewView);
+
+                Button yes = findViewById(R.id.cheat2);
+                yes.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                Intent intent = new Intent(getApplicationContext(), OptionPutOrTake.class);
+                                startActivity(intent);
+
+                        }
+                });
 
                 qrCodeFoundButton = findViewById(R.id.activity_main_qrCodeFoundButton);
                 qrCodeFoundButton.setVisibility(View.INVISIBLE);

@@ -50,8 +50,8 @@ public class Popup {
             public void onClick(View v) {
 
                 //TODO BLUETOOTH CONNCETION
-                a.removeOffer();
-
+                a.removeOffer(name,"1");
+                popupWindow.dismiss();
             }
         });
 

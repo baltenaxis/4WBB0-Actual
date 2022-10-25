@@ -54,12 +54,12 @@ public class Offers extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO Auto-generated method stub
                 if(position == 0) {
-                    Popup popUpClass = new Popup(a);
+                    Popup popUpClass = new Popup(a,kur2[0]);
                     popUpClass.showPopupWindow(view);
                 }
 
                 else if(position == 1) {
-                    Popup popUpClass = new Popup(a);
+                    Popup popUpClass = new Popup(a,kur2[1]);
                     popUpClass.showPopupWindow(view);
                 }
 

@@ -114,6 +114,7 @@ public class QRHandler extends AppCompatActivity {
                         public void onQRCodeFound(String _qrCode) {
                                 qrCode = _qrCode;
                                 qrCodeFoundButton.setVisibility(View.VISIBLE);
+                                startActivity(new Intent(QRHandler.this, OptionPutOrTake.class));
                                 //TODO bluetooth shit
                         }
 

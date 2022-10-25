@@ -17,26 +17,32 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="312dp"
-            android:layout_height="322dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="-50dp"
-            app:srcCompat="@drawable/qr" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="130dp"
-            android:layout_marginTop="85dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:gravity="center"
-            android:text="Scan locker's QR code"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
     </androidx.camera.view.PreviewView>
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="312dp"
+        android:layout_height="322dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="-50dp"
+        app:layout_constraintStart_toStartOf="@+id/activity_main_previewView"
+        app:layout_constraintTop_toTopOf="@+id/activity_main_previewView"
+        app:srcCompat="@drawable/qr" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="130dp"
+        android:layout_marginTop="85dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="center"
+        android:text="Scan locker's QR code"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/activity_main_previewView"
+        app:layout_constraintTop_toTopOf="@+id/activity_main_previewView" />
 
     <Button
         android:id="@+id/activity_main_qrCodeFoundButton"

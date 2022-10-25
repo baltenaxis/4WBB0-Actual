@@ -41,7 +41,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, BluetoothHandler.class);
+                Intent intent = new Intent(SplashScreen.this, Welcome.class);
                 intent.putExtra("kur",items1);
                 intent.putExtra("kur1",items2);
                 startActivity(intent);

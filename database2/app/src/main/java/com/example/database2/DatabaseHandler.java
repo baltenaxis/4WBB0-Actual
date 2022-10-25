@@ -79,6 +79,39 @@ public class DatabaseHandler {
         return items;
 
     }
+    public Map<String,ArrayList<String>> readOffers(int lockerId){
+
+        DatabaseReference lockerRef = database.getReference("Offers").child(Integer.toString(lockerId)).child("Items");
+        ArrayList<String> images = new ArrayList<>();
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> descritions = new ArrayList<>();
+        lockerRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot_a : snapshot.getChildren()) {
+
+                    String availability = snapshot_a.child("availability").getValue(String.class);
+                    images.add(availability);
+                    String name = snapshot_a.child("name").getValue(String.class);
+                    names.add(name);
+                    String description = snapshot_a.child("description").getValue(String.class);
+                    descritions.add(description);
+
+                    System.out.println("kur");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(currentContext, "Fail to get data.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        HashMap<String,ArrayList<String>> offers = new HashMap<>();
+        offers.put("availability",images);
+        offers.put("name",names);
+        offers.put("description",descritions);
+        return offers;
+
+    }
     public void uploadItem(String name, String description, String image, String lockerId){
         DatabaseReference itemRef = database.getReference("Lockers").child(lockerId).child("Items").child(name);
         itemRef.child("name").setValue(name);
@@ -91,5 +124,13 @@ public class DatabaseHandler {
         offerRef.child("name").setValue(name);
         offerRef.child("description").setValue(description);
         offerRef.child("availability").setValue(availability);
+    }
+    public void removeItem(String name, String lockerId){
+        DatabaseReference offerRef = database.getReference("Lockers").child(lockerId).child("Items").child(name);
+        offerRef.removeValue();
+    }
+    public void removeOffer(String name, String lockerId){
+        DatabaseReference offerRef = database.getReference("Offers").child(lockerId).child("Items").child(name);
+        offerRef.removeValue();
     }
 }

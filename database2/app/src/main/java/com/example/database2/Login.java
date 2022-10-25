@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,8 +55,12 @@ public class Login extends AppCompatActivity {
         gobacktowelcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentgoback = new Intent(Login.this, Welcome.class);
-                startActivity(intentgoback);
+                Intent intent = new Intent(getApplicationContext(), Welcome.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 
@@ -62,8 +68,12 @@ public class Login extends AppCompatActivity {
         cheat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cheating = new Intent(Login.this, Mainpage.class);
-                startActivity(cheating);
+                Intent intent = new Intent(getApplicationContext(), Mainpage.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 
@@ -94,14 +104,24 @@ public class Login extends AppCompatActivity {
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Register.class));
+                Intent intent = new Intent(getApplicationContext(), Register.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 
         mLinkForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ForgotPassword.class));
+                Intent intent = new Intent(getApplicationContext(), ForgotPassword.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 
@@ -134,7 +154,12 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             if (fAuth.getCurrentUser().isEmailVerified()) {
                                 Toast.makeText(getApplicationContext(), "Log in successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), Mainpage.class));
+                                Intent intent = new Intent(getApplicationContext(), Mainpage.class);
+                                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                                intent.putExtra("kur",hashMap);
+                                intent.putExtra("kur1",hashMap1);
+                                startActivity(intent);
                             } else{
                                 Toast.makeText(getApplicationContext(), "Please verify your email address", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);

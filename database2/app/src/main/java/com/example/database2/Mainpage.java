@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Mainpage extends AppCompatActivity {
 
     @Override
@@ -18,7 +21,11 @@ public class Mainpage extends AppCompatActivity {
         seeoffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Mainpage.this, Offers.class);
+                Intent intent = new Intent(getApplicationContext(), Offers.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
                 startActivity(intent);
 
             }
@@ -28,8 +35,12 @@ public class Mainpage extends AppCompatActivity {
         scanlocker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(Mainpage.this, QRHandler.class);
-                startActivity(intent2);
+                Intent intent = new Intent(getApplicationContext(), QRHandler.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 
@@ -37,8 +48,12 @@ public class Mainpage extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(Mainpage.this, PreLogOut.class);
-                startActivity(intent2);
+                Intent intent = new Intent(getApplicationContext(), PreLogOut.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
 
             }
         });

@@ -28,6 +28,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -66,8 +68,12 @@ public class Register extends AppCompatActivity {
         gobacktowelcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentgoback = new Intent(Register.this, Welcome.class);
-                startActivity(intentgoback);
+                Intent intent = new Intent(getApplicationContext(), Welcome.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 
@@ -121,7 +127,12 @@ public class Register extends AppCompatActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Login.class));
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 

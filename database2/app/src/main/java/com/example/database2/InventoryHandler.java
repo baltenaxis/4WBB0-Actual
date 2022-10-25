@@ -19,34 +19,14 @@ public class InventoryHandler extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         ListView list;
 
-        String[] maintitle ={
-                "Title 1","Title 2",
-                "Title 3","Title 4",
-                "Title 5",
-        };
-
-        String[] subtitle ={
-                "Sub Title 1","Sub Title 2",
-                "Sub Title 3","Sub Title 4",
-                "Sub Title 5",
-        };
-
-        Integer[] imgid={
-                R.drawable.abcd,R.drawable.abcd,
-                R.drawable.abcd,R.drawable.abcd,
-                R.drawable.abcd,
-        };
         DatabaseHandler a = new DatabaseHandler(getApplicationContext());
         HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
         ArrayList<String> brat = hashMap.get("names");
         ArrayList<String> brat1 = hashMap.get("descriptions");
         ArrayList<String> brat2 = hashMap.get("images");
-        System.out.println(brat.get(0));
-        System.out.println(brat1.get(0));
-        System.out.println(brat2.get(0));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
-
 
         String[] kur2 = brat.toArray(new String[0]);
 

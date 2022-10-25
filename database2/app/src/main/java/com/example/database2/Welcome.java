@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Welcome extends AppCompatActivity {
 
     Button mLoginPageBtn;
@@ -23,14 +26,24 @@ public class Welcome extends AppCompatActivity {
         mRegisterPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Register.class));
+                Intent intent = new Intent(getApplicationContext(), Register.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 
         mLoginPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Login.class));
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
+                intent.putExtra("kur",hashMap);
+                intent.putExtra("kur1",hashMap1);
+                startActivity(intent);
             }
         });
 

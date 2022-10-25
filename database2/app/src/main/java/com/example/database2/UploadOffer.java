@@ -15,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class UploadOffer extends AppCompatActivity {
 
@@ -83,7 +86,9 @@ public class UploadOffer extends AppCompatActivity {
         goback2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UploadOffer.this, Offers.class);
+                Intent intent = new Intent(getApplicationContext(), Offers.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                intent.putExtra("kur",hashMap);
                 startActivity(intent);
             }
         });

@@ -88,7 +88,7 @@ public class QRHandler extends AppCompatActivity {
                 }
         }
         private void bindCameraPreview(@NonNull ProcessCameraProvider cameraProvider) {
-                previewView.setImplementationMode(PreviewView.ImplementationMode.SURFACE_VIEW);
+                previewView.setPreferredImplementationMode(PreviewView.ImplementationMode.SURFACE_VIEW);
 
                 Preview preview = new Preview.Builder()
                         .build();
@@ -97,7 +97,7 @@ public class QRHandler extends AppCompatActivity {
                         .requireLensFacing(CameraSelector.LENS_FACING_BACK)
                         .build();
 
-                preview.setSurfaceProvider(previewView.getSurfaceProvider());
+                preview.setSurfaceProvider(previewView.createSurfaceProvider());
 
                 ImageAnalysis imageAnalysis =
                         new ImageAnalysis.Builder()
@@ -110,6 +110,7 @@ public class QRHandler extends AppCompatActivity {
                         public void onQRCodeFound(String _qrCode) {
                                 qrCode = _qrCode;
                                 qrCodeFoundButton.setVisibility(View.VISIBLE);
+                                //TODO bluetooth shit
                         }
 
                         @Override

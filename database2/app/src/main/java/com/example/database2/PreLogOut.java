@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class PreLogOut extends AppCompatActivity {
 
     @Override
@@ -18,7 +21,9 @@ public class PreLogOut extends AppCompatActivity {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PreLogOut.this, Welcome.class);
+                Intent intent = new Intent(getApplicationContext(), Welcome.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                intent.putExtra("kur",hashMap);
                 startActivity(intent);
 
             }
@@ -28,8 +33,10 @@ public class PreLogOut extends AppCompatActivity {
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(PreLogOut.this, Mainpage.class);
-                startActivity(intent2);
+                Intent intent = new Intent(getApplicationContext(), Mainpage.class);
+                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
+                intent.putExtra("kur",hashMap);
+                startActivity(intent);
 
             }
         });

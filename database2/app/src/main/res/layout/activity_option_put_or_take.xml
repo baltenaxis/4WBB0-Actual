@@ -5,46 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OptionPutOrTake">
+    
 
-    <Button
-        android:id="@+id/putfoodin"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="285dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="398dp"
-        android:background="@drawable/custom_button_1"
-        android:fontFamily="@font/montserrat_light"
-        android:padding="10dp"
-        android:shadowDx="10"
-        android:shadowDy="12"
-        android:text="Put food in"
-        android:textColor="#164345"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/takefoodout"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="398dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="285dp"
-        android:background="@drawable/custom_button_1"
-        android:fontFamily="@font/montserrat_light"
-        android:padding="10dp"
-        android:text="Take food out"
-        android:textColor="#164345"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 

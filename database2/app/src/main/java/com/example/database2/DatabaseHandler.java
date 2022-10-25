@@ -29,6 +29,7 @@ public class DatabaseHandler {
         database = FirebaseDatabase.getInstance("https://vintagefoodslogin-default-rtdb.europe-west1.firebasedatabase.app");
         currentContext = kurmiqnko;
         DatabaseReset a = new DatabaseReset();
+
     }
 
 

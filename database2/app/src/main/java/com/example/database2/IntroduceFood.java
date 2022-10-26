@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class IntroduceFood extends AppCompatActivity {
 
 
@@ -130,6 +133,12 @@ public class IntroduceFood extends AppCompatActivity {
                 }
             }
         }
+    }
+    public void uploadItem(String name, String description, String image, String lockerId){
+        DatabaseReference itemRef = FirebaseDatabase.getInstance("https://vintagefoodslogin-default-rtdb.europe-west1.firebasedatabase.app").getReference("Lockers").child(lockerId).child("Items").child(name);
+        itemRef.child("name").setValue(name);
+        itemRef.child("description").setValue(description);
+        itemRef.child("image").setValue(image);
     }
 
 

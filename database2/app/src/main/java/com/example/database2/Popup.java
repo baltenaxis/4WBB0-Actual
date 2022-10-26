@@ -12,11 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Popup {
-    private DatabaseHandler a;
-    private String name;
-    public Popup(DatabaseHandler b, String mane){
-        a=b;
-        name=mane;
+    public Popup(){
     }
 
     public void showPopupWindow(final View view) {
@@ -50,7 +46,6 @@ public class Popup {
             public void onClick(View v) {
 
                 //TODO BLUETOOTH CONNCETION
-                a.removeOffer(name,"1");
                 popupWindow.dismiss();
             }
         });

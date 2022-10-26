@@ -33,17 +33,11 @@ public class SplashScreen extends AppCompatActivity {
 
         image = findViewById(R.id.imageView5);
         image.setAnimation(bottomAnim);
-        DatabaseHandler a = new DatabaseHandler(getApplicationContext());
-        HashMap<String,ArrayList<String>> items1 = (HashMap<String, ArrayList<String>>) a.readItems(1);
-        HashMap<String,ArrayList<String>> items2 = (HashMap<String, ArrayList<String>>) a.readOffers(1);
-        /*ArrayList<Item> items2 = a.readItems(2);
-        ArrayList<Item> items3 = a.readItems(3);*/
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashScreen.this, Welcome.class);
-                intent.putExtra("kur",items1);
-                intent.putExtra("kur1",items2);
                 startActivity(intent);
                 finish();
             }

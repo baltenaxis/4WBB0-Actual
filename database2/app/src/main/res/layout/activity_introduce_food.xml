@@ -20,22 +20,24 @@
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
 
     <TextView
         android:id="@+id/foodCategory"
         android:layout_width="270dp"
         android:layout_height="26dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="81dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="Food Category:"
         android:textColor="#FFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -60,13 +62,12 @@
 
     <CheckBox
         android:id="@+id/checkbFruit"
-        android:layout_width="180dp"
+        android:layout_width="150dp"
         android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="207dp"
+        android:layout_marginStart="23dp"
         android:button="@drawable/custom_checkbox"
         android:fontFamily="@font/montserrat_light"
         android:scaleX="0.5"
@@ -75,6 +76,7 @@
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkbVeg" />
 
@@ -117,14 +119,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodCategory" />
 
+
     <CheckBox
         android:id="@+id/checkbOther"
-        android:layout_width="151dp"
+        android:layout_width="160dp"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="193dp"
         android:button="@drawable/custom_checkbox"
         android:fontFamily="@font/montserrat_light"
         android:scaleX="0.5"
@@ -132,16 +134,14 @@
         android:text="  Other"
         android:textColor="@color/white"
         android:textSize="28sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkbFruit"
         app:layout_constraintTop_toBottomOf="@+id/checkbCooked" />
-
 
     <EditText
         android:id="@+id/foodName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginStart="64dp"
         android:ems="10"
         android:fontFamily="@font/montserrat_light"
         android:hint="Food name"
@@ -150,14 +150,16 @@
         android:textColor="#000"
         android:textColorHint="#D8D4D4"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/textTandCBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523" />
 
     <EditText
         android:id="@+id/expirationDate"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
+        android:layout_marginStart="64dp"
         android:ems="10"
         android:fontFamily="@font/montserrat_light"
         android:hint="(Estimated) expiration date"
@@ -173,7 +175,7 @@
         android:id="@+id/confirmBtn"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/custom_button_7"
         android:fontFamily="@font/montserrat_regular"
         android:padding="10dp"
@@ -212,8 +214,10 @@
         android:textColor="#164345"
         android:textSize="11sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/confirmBtn"
         app:layout_constraintStart_toStartOf="@+id/foodName"
-        app:layout_constraintTop_toBottomOf="@+id/expirationDate" />
+        app:layout_constraintTop_toBottomOf="@+id/expirationDate"
+        app:layout_constraintVertical_bias="0.003" />
 
     <ImageView
         android:id="@+id/IVPreviewImage"
@@ -225,5 +229,5 @@
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idSelectPhoto"
-        app:layout_constraintVertical_bias="0.307" />
+        app:layout_constraintVertical_bias="0.403" />
 </androidx.constraintlayout.widget.ConstraintLayout>

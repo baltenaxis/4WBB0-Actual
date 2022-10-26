@@ -33,7 +33,7 @@ public class IntroduceFood extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_introduce_food);
         mFoodCategory = findViewById(R.id.foodCategory);
         mCheckbVeg = findViewById(R.id.checkbVeg);
         mCheckbFruit = findViewById(R.id.checkbFruit);

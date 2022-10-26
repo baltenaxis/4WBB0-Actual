@@ -30,7 +30,7 @@ public class OptionPutOrTake extends AppCompatActivity {
         putfoodin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(OptionPutOrTake.this, InputFood.class);
+                Intent intent2 = new Intent(OptionPutOrTake.this, IntroduceFood.class);
                 startActivity(intent2);
             }
         });

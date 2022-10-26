@@ -9,104 +9,139 @@
 
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="171dp"
-        android:layout_marginTop="109dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="256dp"
+        android:layout_width="537dp"
+        android:layout_height="773dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="291dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/oavl" />
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="242dp"
+        android:layout_width="552dp"
+        android:layout_height="865dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="208dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/oavl2" />
-
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginBottom="277dp"
-        android:fontFamily="@font/montserrat_black"
-        android:gravity="center"
-        android:text="Place food in"
-        android:textColor="#164345"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/takefoodout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="102dp"
-        android:fontFamily="@font/montserrat_black"
-        android:gravity="center"
-        android:text="Take food out"
-        android:textColor="#164345"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/takefoodout"
-        app:layout_constraintStart_toStartOf="@+id/takefoodout"
-        app:layout_constraintTop_toBottomOf="@+id/putfoodin" />
 
     <Button
         android:id="@+id/putfoodin"
-        android:layout_width="257dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="296dp"
+        android:layout_width="416dp"
+        android:layout_height="381dp"
+
+        android:layout_marginEnd="91dp"
+        android:layout_marginBottom="462dp"
         android:background="@drawable/custom_button_6"
         android:backgroundTintMode="multiply"
         android:fontFamily="@font/montserrat_black"
-        android:text="Place           food in"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/takefoodout"
-        android:layout_width="305dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="84dp"
+        android:layout_width="415dp"
+        android:layout_height="372dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="440dp"
         android:background="@drawable/custom_button_6"
         android:backgroundTintMode="multiply"
         android:fontFamily="@font/montserrat_black"
-        android:text="Take                 food out"
         android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="92dp"
+        android:fontFamily="@font/montserrat_black"
+        android:gravity="center"
+        android:text="Take      food out"
         android:textColor="@color/white"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/takefoodout"
+        app:layout_constraintVertical_bias="0.975" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/montserrat_black"
+        android:gravity="center"
+        android:text="Place food in"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="348dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="41dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="440dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="216dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="imageView10"
+        tools:layout_editor_absoluteX="36dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="imageView9" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="imageView9" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

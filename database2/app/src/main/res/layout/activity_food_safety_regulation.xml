@@ -8,6 +8,19 @@
     tools:context=".FoodSafetyRegulation">
 
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="316dp"
+        android:scaleX="0.2"
+        android:scaleY="0.2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
     <TextView
         android:id="@+id/textViewFSG"
         android:layout_width="337dp"
@@ -60,19 +73,20 @@
         android:text="\u25CB The packaging of the product"
         android:textColor="#164345"
         android:textSize="13dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:layout_editor_absoluteX="74dp" />
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="292dp"
         android:layout_height="34dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="\u25CB Your personal hygiene if in contact with product"
         android:textColor="#164345"
         android:textSize="13dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
@@ -85,6 +99,7 @@
         android:textColor="#164345"
         android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
@@ -131,28 +146,14 @@
         android:id="@+id/textView12"
         android:layout_width="321dp"
         android:layout_height="36dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="\u25CF If you are unsure about the quality of a certain food, don't place it in the locker!"
         android:textColor="#164345"
         android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="316dp"
-        android:scaleX="0.2"
-        android:scaleY="0.2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

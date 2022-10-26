@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN = 2000;
+    private static final int SPLASH_SCREEN = 2000;
     //Variable
     Animation bottomAnim;
     ImageView image;

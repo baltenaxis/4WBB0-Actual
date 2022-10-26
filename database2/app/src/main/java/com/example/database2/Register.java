@@ -149,17 +149,17 @@ public class Register extends AppCompatActivity {
                 //if(password.toString().length()<8 &&!isValidPassword(password.toString())){
 
 
-                if (!isValidPassword(password.toString())){
+                if (!isValidPassword(password)){
                     mPassword.setError("Must contain at least: \n - 8 characters \n - 1 number \n - 1 capital letter \n - 1 special character");
                     return;
                 }
 
-                if (password.toString().length()<8 ){
+                if (password.length()<8 ){
                     mPassword.setError("Must contain at least: \n - 8 characters \n - 1 number \n - 1 capital letter \n - 1 special character");
                     return;
                 }
 
-                if(!confirmPassword.toString().equals(password.toString()))  {
+                if(!confirmPassword.equals(password))  {
                     mConfirmPassword.setError("Must match the previous entry");
                     return;
                 }
@@ -218,7 +218,7 @@ public class Register extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "onFailure: " + e.toString());
+                                    Log.d(TAG, "onFailure: " + e);
                                 }
                             });
 

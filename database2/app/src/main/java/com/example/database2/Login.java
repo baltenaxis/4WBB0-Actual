@@ -123,7 +123,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 //if(password.toString().length()<8 &&!isValidPassword(password.toString())){
-                if (password.toString().isEmpty()) {
+                if (password.isEmpty()) {
                     mpassword.setError("Password is required");
                     return;
                 }

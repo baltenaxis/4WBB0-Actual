@@ -21,8 +21,8 @@ import java.util.Random;
 public class DatabaseHandler extends Thread{
 
     private static final String TAG = "MainActivity";
-    private FirebaseDatabase database;
-    private Context currentContext;
+    private final FirebaseDatabase database;
+    private final Context currentContext;
 
 
     public DatabaseHandler(Context kurmiqnko){

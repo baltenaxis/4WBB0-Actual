@@ -101,20 +101,37 @@ public class Offers extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 if (position == 0) {
                     Popup popUpClass = new Popup();
-                    removeOffer(kur2[0],"1");
                     popUpClass.showPopupWindow(view);
+                    if(popUpClass.accept) {
+                        removeOffer(kur2[0], "1");
+                    }
                 } else if (position == 1) {
                     Popup popUpClass = new Popup();
-                    removeOffer(kur2[1],"1");
                     popUpClass.showPopupWindow(view);
+                    if(popUpClass.accept) {
+                        removeOffer(kur2[1], "1");
+                    }
                 } else if (position == 2) {
+                    Popup popUpClass = new Popup();
+                    popUpClass.showPopupWindow(view);
+                    if(popUpClass.accept) {
+                        removeOffer(kur2[2], "1");
+                    }
 
                 } else if (position == 3) {
+                    Popup popUpClass = new Popup();
+                    popUpClass.showPopupWindow(view);
+                    if(popUpClass.accept) {
+                        removeOffer(kur2[3], "1");
+                    }
 
 
                 } else if (position == 4) {
-
-
+                    Popup popUpClass = new Popup();
+                    popUpClass.showPopupWindow(view);
+                    if(popUpClass.accept) {
+                        removeOffer(kur2[4], "1");
+                    }
                 }
 
             }

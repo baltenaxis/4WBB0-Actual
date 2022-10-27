@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Popup {
+    public boolean accept = false;
     public Popup(){
     }
 
@@ -40,16 +41,21 @@ public class Popup {
         TextView test2 = popupView.findViewById(R.id.titleText);
         test2.setText("Would you accept/reject this item/offer?");
 
-        Button buttonEdit = popupView.findViewById(R.id.accbutton);
-        buttonEdit.setOnClickListener(new View.OnClickListener() {
+        Button buttonAcc = popupView.findViewById(R.id.accbutton);
+        buttonAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //TODO BLUETOOTH CONNCETION
+                accept=true;
                 popupWindow.dismiss();
             }
         });
-
+        Button buttonDec = popupView.findViewById(R.id.rejbutton);
+        buttonAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
 
 
         //Handler for clicking on the inactive zone of the window

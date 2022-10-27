@@ -8,6 +8,19 @@
     tools:context=".IntroduceFood">
 
 
+    <ImageButton
+        android:id="@+id/goBack3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:backgroundTint="#0FFFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        app:tint="#164345" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

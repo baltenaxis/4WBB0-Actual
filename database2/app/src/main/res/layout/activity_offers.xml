@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <ListView
-        android:id="@+id/list"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
@@ -89,9 +89,10 @@
         app:layout_constraintTop_toTopOf="parent"></ListView>
 
     <ListView
+        android:id="@+id/list"
         android:layout_width="344dp"
         android:layout_height="411dp"
-        android:layout_marginTop="405dp"
+        android:layout_marginTop="305dp"
         android:layout_marginBottom="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

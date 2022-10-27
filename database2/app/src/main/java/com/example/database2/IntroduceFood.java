@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class IntroduceFood extends AppCompatActivity {
     EditText mExpirationDate;
     Button mIdSelectPhoto;
     Button mConfirmButton;
+    ImageButton mGoBack;
     TextView mTextTandCBtn;
     TextView mFoodCategory;
     ImageView mIVPreviewImage;
@@ -49,6 +51,7 @@ public class IntroduceFood extends AppCompatActivity {
         mConfirmButton = findViewById(R.id.confirmBtn);
         mTextTandCBtn = findViewById(R.id.textTandCBtn);
         mIVPreviewImage = findViewById(R.id.IVPreviewImage);
+        mGoBack = findViewById(R.id.goBack3);
 
 
         // handle the Choose Image button to trigger
@@ -60,6 +63,13 @@ public class IntroduceFood extends AppCompatActivity {
             }
         });
 
+        mGoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), OptionPutOrTake.class);
+                startActivity(intent);
+            }
+        });
         mConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

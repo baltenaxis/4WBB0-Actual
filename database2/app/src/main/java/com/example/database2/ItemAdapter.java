@@ -51,5 +51,5 @@ public class ItemAdapter extends ArrayAdapter<String> {
 
         return rowView;
 
-    };
+    }
 }

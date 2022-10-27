@@ -22,10 +22,6 @@ public class Mainpage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Offers.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                intent.putExtra("kur",hashMap);
-                intent.putExtra("kur1",hashMap1);
                 startActivity(intent);
 
             }
@@ -36,10 +32,6 @@ public class Mainpage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), QRHandler.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                intent.putExtra("kur",hashMap);
-                intent.putExtra("kur1",hashMap1);
                 startActivity(intent);
             }
         });
@@ -49,10 +41,6 @@ public class Mainpage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PreLogOut.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                intent.putExtra("kur",hashMap);
-                intent.putExtra("kur1",hashMap1);
                 startActivity(intent);
 
             }

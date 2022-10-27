@@ -56,10 +56,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Welcome.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                intent.putExtra("kur",hashMap);
-                intent.putExtra("kur1",hashMap1);
                 startActivity(intent);
             }
         });
@@ -69,10 +65,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Mainpage.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                intent.putExtra("kur",hashMap);
-                intent.putExtra("kur1",hashMap1);
                 startActivity(intent);
             }
         });
@@ -105,10 +97,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Register.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                intent.putExtra("kur",hashMap);
-                intent.putExtra("kur1",hashMap1);
                 startActivity(intent);
             }
         });
@@ -117,10 +105,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ForgotPassword.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                intent.putExtra("kur",hashMap);
-                intent.putExtra("kur1",hashMap1);
                 startActivity(intent);
             }
         });
@@ -139,7 +123,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 //if(password.toString().length()<8 &&!isValidPassword(password.toString())){
-                if (password.toString().isEmpty()) {
+                if (password.isEmpty()) {
                     mpassword.setError("Password is required");
                     return;
                 }
@@ -155,10 +139,6 @@ public class Login extends AppCompatActivity {
                             if (fAuth.getCurrentUser().isEmailVerified()) {
                                 Toast.makeText(getApplicationContext(), "Log in successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), Mainpage.class);
-                                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                                intent.putExtra("kur",hashMap);
-                                intent.putExtra("kur1",hashMap1);
                                 startActivity(intent);
                             } else{
                                 Toast.makeText(getApplicationContext(), "Please verify your email address", Toast.LENGTH_SHORT).show();

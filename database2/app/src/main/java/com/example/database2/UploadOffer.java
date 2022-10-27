@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -63,7 +65,6 @@ public class UploadOffer extends AppCompatActivity {
         mpostoffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseHandler a = new DatabaseHandler(getApplicationContext());
                 // getting text from our edittext fields.
                 String food_name = mfname.getText().toString();
                 String food_description = mfdescription.getText().toString();
@@ -76,7 +77,7 @@ public class UploadOffer extends AppCompatActivity {
                     // then show the below message.
                     Toast.makeText(UploadOffer.this, "Please add some data.", Toast.LENGTH_SHORT).show();
                 } else {
-                    a.uploadOffer(food_name,food_description,food_availability,"1");
+                    uploadOffer(food_name,food_description,food_availability,"1");
                 }
             }
         });
@@ -87,8 +88,6 @@ public class UploadOffer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Offers.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                intent.putExtra("kur",hashMap);
                 startActivity(intent);
             }
         });
@@ -129,6 +128,13 @@ public class UploadOffer extends AppCompatActivity {
                 }
             }
         }
+    }
+    public void uploadOffer(String name, String description, String availability, String lockerId){
+        DatabaseReference offerRef = FirebaseDatabase.getInstance("https://vintagefoodslogin-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("Offers").child(lockerId).child("Items").child(name);
+        offerRef.child("name").setValue(name);
+        offerRef.child("description").setValue(description);
+        offerRef.child("availability").setValue(availability);
     }
 
 }

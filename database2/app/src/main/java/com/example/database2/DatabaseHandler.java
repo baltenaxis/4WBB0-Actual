@@ -18,11 +18,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class DatabaseHandler {
+public class DatabaseHandler extends Thread{
 
     private static final String TAG = "MainActivity";
-    private FirebaseDatabase database;
-    private Context currentContext;
+    private final FirebaseDatabase database;
+    private final Context currentContext;
 
 
     public DatabaseHandler(Context kurmiqnko){
@@ -105,6 +105,7 @@ public class DatabaseHandler {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(currentContext, "Fail to get data.", Toast.LENGTH_SHORT).show();
             }
+
         });
         HashMap<String,ArrayList<String>> offers = new HashMap<>();
         offers.put("availability",images);

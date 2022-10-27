@@ -22,8 +22,6 @@ public class PreLogOut extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Welcome.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                intent.putExtra("kur",hashMap);
                 startActivity(intent);
 
             }
@@ -34,8 +32,6 @@ public class PreLogOut extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Mainpage.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                intent.putExtra("kur",hashMap);
                 startActivity(intent);
 
             }

@@ -128,10 +128,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Login.class);
-                HashMap<String, ArrayList<String>> hashMap = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur");
-                HashMap<String, ArrayList<String>> hashMap1 = (HashMap<String, ArrayList<String>>)getIntent().getSerializableExtra("kur1");
-                intent.putExtra("kur",hashMap);
-                intent.putExtra("kur1",hashMap1);
+
                 startActivity(intent);
             }
         });
@@ -152,17 +149,17 @@ public class Register extends AppCompatActivity {
                 //if(password.toString().length()<8 &&!isValidPassword(password.toString())){
 
 
-                if (!isValidPassword(password.toString())){
+                if (!isValidPassword(password)){
                     mPassword.setError("Must contain at least: \n - 8 characters \n - 1 number \n - 1 capital letter \n - 1 special character");
                     return;
                 }
 
-                if (password.toString().length()<8 ){
+                if (password.length()<8 ){
                     mPassword.setError("Must contain at least: \n - 8 characters \n - 1 number \n - 1 capital letter \n - 1 special character");
                     return;
                 }
 
-                if(!confirmPassword.toString().equals(password.toString()))  {
+                if(!confirmPassword.equals(password))  {
                     mConfirmPassword.setError("Must match the previous entry");
                     return;
                 }
@@ -221,7 +218,7 @@ public class Register extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "onFailure: " + e.toString());
+                                    Log.d(TAG, "onFailure: " + e);
                                 }
                             });
 

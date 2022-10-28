@@ -29,6 +29,7 @@ public class OptionPutOrTake extends AppCompatActivity {
                 if(smthin) {
                     Popup popUpClass = new Popup("maika ti");
                     popUpClass.showPopupWindow(view);
+                    smthin=false;
                 }else{
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                             OptionPutOrTake.this);
@@ -39,19 +40,12 @@ public class OptionPutOrTake extends AppCompatActivity {
 
                     // set dialog message
                     alertDialogBuilder
-                            .setMessage("Click yes to exit!")
+                            .setMessage("")
                             .setCancelable(false)
                             .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,int id) {
                                     // if this button is clicked, close
                                     // current activity
-                                    OptionPutOrTake.this.finish();
-                                }
-                            })
-                            .setNegativeButton("No",new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,int id) {
-                                    // if this button is clicked, just close
-                                    // the dialog box and do nothing
                                     dialog.cancel();
                                 }
                             });
@@ -113,6 +107,7 @@ public class OptionPutOrTake extends AppCompatActivity {
                 }else {
                     Intent intent2 = new Intent(OptionPutOrTake.this, IntroduceFood.class);
                     startActivity(intent2);
+                    smthin=true;
                 }
             }
         });

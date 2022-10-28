@@ -73,7 +73,7 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="349dp"
+        android:layout_width="0dp"
         android:layout_height="54dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
@@ -92,7 +92,7 @@
 
     <EditText
         android:id="@+id/confirmPassword"
-        android:layout_width="349dp"
+        android:layout_width="0dp"
         android:layout_height="54dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"

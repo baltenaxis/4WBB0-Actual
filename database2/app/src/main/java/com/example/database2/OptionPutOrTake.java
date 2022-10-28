@@ -42,7 +42,7 @@ public class OptionPutOrTake extends AppCompatActivity {
                     alertDialogBuilder
                             .setMessage("")
                             .setCancelable(false)
-                            .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                            .setPositiveButton("Oh right!",new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,int id) {
                                     // if this button is clicked, close
                                     // current activity
@@ -82,9 +82,9 @@ public class OptionPutOrTake extends AppCompatActivity {
 
                     // set dialog message
                     alertDialogBuilder
-                            .setMessage("Click yes to exit!")
+                            .setMessage("Choose another locker!")
                             .setCancelable(false)
-                            .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                            .setPositiveButton("All right!",new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,int id) {
                                     // if this button is clicked, close
                                     // current activity

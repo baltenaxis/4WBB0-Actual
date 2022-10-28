@@ -78,6 +78,8 @@ public class UploadOffer extends AppCompatActivity {
                     Toast.makeText(UploadOffer.this, "Please add some data.", Toast.LENGTH_SHORT).show();
                 } else {
                     uploadOffer(food_name,food_description,food_availability,"1");
+                    Intent intent = new Intent(getApplicationContext(), Offers.class);
+                    startActivity(intent);
                 }
             }
         });

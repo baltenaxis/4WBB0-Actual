@@ -33,6 +33,7 @@ public class SplashScreen extends AppCompatActivity {
 
         image = findViewById(R.id.imageView5);
         image.setAnimation(bottomAnim);
+        DatabaseReset a = new DatabaseReset();
 
         new Handler().postDelayed(new Runnable() {
             @Override

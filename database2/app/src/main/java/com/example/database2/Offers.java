@@ -31,11 +31,12 @@ import java.util.Map;
 
 public class Offers extends AppCompatActivity {
     private ListView list;
-    private HashMap<String, ArrayList<String>> hashMap;
-    private boolean done=false;
+    private static HashMap<String, ArrayList<String>> hashMap;
+    private Popup.state done= Popup.state.WAIT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         readOffers(1);
     }
 
@@ -58,7 +59,6 @@ public class Offers extends AppCompatActivity {
                     names.add(name);
                     String description = snapshot_a.child("description").getValue(String.class);
                     descritions.add(description);
-                    done=true;
                     System.out.println("kurqweq");
                 }
                 HashMap<String,ArrayList<String>> offers = new HashMap<>();
@@ -85,54 +85,21 @@ public class Offers extends AppCompatActivity {
 
         setContentView(R.layout.activity_offers);
 
-        String[] kur2 = brat.toArray(new String[0]);
+        String[]kur2 = brat.toArray(new String[0]);
         String[] kur4 = brat1.toArray(new String[0]);
         String[] kur6 = new String[1];
 
         ItemAdapter adapter = new ItemAdapter(this, kur2, kur4, kur6);
         list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);
-        readOffers(1);
         System.out.println("maika ti2");
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO Auto-generated method stub
-                if (position == 0) {
-                    Popup popUpClass = new Popup();
-                    popUpClass.showPopupWindow(view);
-                    if(popUpClass.accept) {
-                        removeOffer(kur2[0], "1");
-                    }
-                } else if (position == 1) {
-                    Popup popUpClass = new Popup();
-                    popUpClass.showPopupWindow(view);
-                    if(popUpClass.accept) {
-                        removeOffer(kur2[1], "1");
-                    }
-                } else if (position == 2) {
-                    Popup popUpClass = new Popup();
-                    popUpClass.showPopupWindow(view);
-                    if(popUpClass.accept) {
-                        removeOffer(kur2[2], "1");
-                    }
-
-                } else if (position == 3) {
-                    Popup popUpClass = new Popup();
-                    popUpClass.showPopupWindow(view);
-                    if(popUpClass.accept) {
-                        removeOffer(kur2[3], "1");
-                    }
-
-
-                } else if (position == 4) {
-                    Popup popUpClass = new Popup();
-                    popUpClass.showPopupWindow(view);
-                    if(popUpClass.accept) {
-                        removeOffer(kur2[4], "1");
-                    }
-                }
+                Popup popUpClass = new Popup(kur2[position]);
+                popUpClass.showPopupWindow(view);
 
             }
         });
@@ -154,11 +121,10 @@ public class Offers extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        if(done== Popup.state.ACCEPT|| done == Popup.state.REJECT){
+            done = Popup.state.WAIT;
+            draw();
+        }
 
-    }
-    public void removeOffer(String name, String lockerId){
-        DatabaseReference offerRef = FirebaseDatabase.getInstance("https://vintagefoodslogin-default-rtdb.europe-west1.firebasedatabase.app")
-                .getReference("Offers").child(lockerId).child("Items").child(name);
-        offerRef.removeValue();
     }
 }

@@ -23,7 +23,7 @@ public class OptionPutOrTake extends AppCompatActivity {
                 //add page for bluetooth thing
                 //Intent intent = new Intent(OptionPutOrTake.this, Offers.class);
                 //startActivity(intent);
-                Popup popUpClass = new Popup();
+                Popup popUpClass = new Popup("maika ti");
                 popUpClass.showPopupWindow(view);
             }
         });

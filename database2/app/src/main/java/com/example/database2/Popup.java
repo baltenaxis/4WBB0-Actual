@@ -11,14 +11,18 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Popup {
-    public boolean accept = false;
-    public Popup(){
+    public enum state {ACCEPT, REJECT, WAIT};
+    public state kur = state.WAIT;
+    public String name;
+    public Popup(String name){
+    this.name = name;
     }
 
     public void showPopupWindow(final View view) {
-
-
         //Create a View object yourself through inflater
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.activity_popup, null);
@@ -45,18 +49,19 @@ public class Popup {
         buttonAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accept=true;
+                kur = state.ACCEPT;
+                removeOffer(name,"1");
                 popupWindow.dismiss();
             }
         });
         Button buttonDec = popupView.findViewById(R.id.rejbutton);
-        buttonAcc.setOnClickListener(new View.OnClickListener() {
+        buttonDec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                kur = state.REJECT;
                 popupWindow.dismiss();
             }
         });
-
 
         //Handler for clicking on the inactive zone of the window
 
@@ -69,6 +74,12 @@ public class Popup {
                 return true;
             }
         });
+
+    }
+    public void removeOffer(String name, String lockerId){
+        DatabaseReference offerRef = FirebaseDatabase.getInstance("https://vintagefoodslogin-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("Offers").child(lockerId).child("Items").child(name);
+        offerRef.removeValue();
     }
 
 }

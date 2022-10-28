@@ -1,5 +1,6 @@
 package com.example.database2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
@@ -73,26 +75,61 @@ public class IntroduceFood extends AppCompatActivity {
         mConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String foodName = mFoodName.getText().toString().trim();
-                final String expirationDate = mExpirationDate.getText().toString().trim();
 
-                if ((TextUtils.isEmpty(foodName))) {
-                    mFoodName.setError("Name of product must be addressed");
-                    return;
-                }
-                if ((TextUtils.isEmpty(expirationDate))) {
-                    mExpirationDate.setError("Expiration date must be addressed");
-                    return;
-                }
-                if ( !(mCheckbVeg.isChecked() || mCheckbFruit.isChecked() || mCheckbSnacks.isChecked() || mCheckbCooked.isChecked() || mCheckbOther.isChecked())) {
-                    mFoodCategory.setError("");
-                    Toast.makeText(getApplicationContext(), "Food category must be checked", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (mIVPreviewImage.getDrawable() == null) {
-                    Toast.makeText(getApplicationContext(), "Photo of product is required", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        IntroduceFood.this);
+
+
+                // set title
+                alertDialogBuilder.setTitle("Are you sure?");
+
+                // set dialog message
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+
+                                final String foodName = mFoodName.getText().toString().trim();
+                                final String expirationDate = mExpirationDate.getText().toString().trim();
+
+                                if ((TextUtils.isEmpty(foodName))) {
+                                    mFoodName.setError("Name of product must be addressed");
+                                    return;
+                                }
+                                if ((TextUtils.isEmpty(expirationDate))) {
+                                    mExpirationDate.setError("Expiration date must be addressed");
+                                    return;
+                                }
+                                if ( !(mCheckbVeg.isChecked() || mCheckbFruit.isChecked() || mCheckbSnacks.isChecked() || mCheckbCooked.isChecked() || mCheckbOther.isChecked())) {
+                                    mFoodCategory.setError("");
+                                    Toast.makeText(getApplicationContext(), "Food category must be checked", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                                if (mIVPreviewImage.getDrawable() == null) {
+                                    Toast.makeText(getApplicationContext(), "Photo of product is required", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                Intent intent = new Intent(getApplicationContext(), Mainpage.class);
+                                startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // show it
+                alertDialog.show();
+
+
 
 
             }
@@ -107,7 +144,6 @@ public class IntroduceFood extends AppCompatActivity {
 
 
     }
-
 
 
     // this function is triggered when

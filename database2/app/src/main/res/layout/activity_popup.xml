@@ -10,6 +10,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#164345"
         app:cardCornerRadius="5dp">
 
         <LinearLayout
@@ -23,7 +24,9 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_black"
                 android:text="Titlke"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:padding="10dp"/>
@@ -33,13 +36,15 @@
                 android:id="@+id/accbutton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Accept" />
+                android:fontFamily="@font/montserrat_light"
+                android:text="Yes" />
 
             <Button
                 android:id="@+id/rejbutton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Reject" />
+                android:fontFamily="@font/montserrat_light"
+                android:text="No" />
 
         </LinearLayout>
 

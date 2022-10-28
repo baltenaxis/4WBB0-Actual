@@ -39,7 +39,7 @@ public class Popup {
         //Initialize the elements of our window, install the handler
 
         TextView test2 = popupView.findViewById(R.id.titleText);
-        test2.setText("Would you accept/reject this item/offer?");
+        test2.setText("Are you sure?");
 
         Button buttonAcc = popupView.findViewById(R.id.accbutton);
         buttonAcc.setOnClickListener(new View.OnClickListener() {

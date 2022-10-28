@@ -35,7 +35,7 @@ public class OptionPutOrTake extends AppCompatActivity {
 
 
                     // set title
-                    alertDialogBuilder.setTitle("Your Title");
+                    alertDialogBuilder.setTitle("There is nothing in the locker!");
 
                     // set dialog message
                     alertDialogBuilder
@@ -84,7 +84,7 @@ public class OptionPutOrTake extends AppCompatActivity {
 
 
                     // set title
-                    alertDialogBuilder.setTitle("Your Title");
+                    alertDialogBuilder.setTitle("There is already food in!");
 
                     // set dialog message
                     alertDialogBuilder

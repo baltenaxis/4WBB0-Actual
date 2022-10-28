@@ -16,12 +16,13 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Medium Text"
             android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/montserrat_black"
             android:layout_marginTop="5dp"
             android:padding="2dp"
             android:textColor="#4d4d4d" />
@@ -30,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:fontFamily="@font/montserrat_light"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -87,12 +87,11 @@ public class Offers extends AppCompatActivity {
 
         String[]kur2 = brat.toArray(new String[0]);
         String[] kur4 = brat1.toArray(new String[0]);
-        String[] kur6 = new String[1];
+        String[] kur6 = brat2.toArray(new String[0]);
 
         ItemAdapter adapter = new ItemAdapter(this, kur2, kur4, kur6);
         list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);
-        System.out.println("maika ti2");
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -122,8 +121,8 @@ public class Offers extends AppCompatActivity {
             }
         });
         if(done== Popup.state.ACCEPT|| done == Popup.state.REJECT){
-            done = Popup.state.WAIT;
-            draw();
+            Intent intent = new Intent(getApplicationContext(), OptionPutOrTake.class);
+            startActivity(intent);
         }
 
     }

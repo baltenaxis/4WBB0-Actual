@@ -14,12 +14,15 @@ public class DatabaseReset {
         lockerRef.child("Bak1lava").child("Name").setValue("jiawrgnuwn");
         lockerRef.child("Bak1lava").child("Description").setValue("jdsbviw jd 234234234234");
         DatabaseReference offerRef = database.getReference("Offers").child(Integer.toString(1)).child("Items");
-        offerRef.child("jiawswr2342342342342tgwergnuwn").child("availability").setValue("cHyR8Pa.jpg");
-        offerRef.child("jiawswr2342342342342tgwergnuwn").child("name").setValue("jiawswr2342342342342tgwergnuwn");
-        offerRef.child("jiawswr2342342342342tgwergnuwn").child("description").setValue("qwuiegh90uqw9rewguhqu98");
-        offerRef.child("jiawrgnuwn").child("availability").setValue("cHyR8Pa.jpg");
-        offerRef.child("jiawrgnuwn").child("name").setValue("jiawrgnuwn");
-        offerRef.child("jiawrgnuwn").child("description").setValue("jdsbviw jd 234234234234");
+        offerRef.child("Baklava").child("availability").setValue("Now");
+        offerRef.child("Baklava").child("name").setValue("Baklava");
+        offerRef.child("Baklava").child("description").setValue("Very tasty baklava for your enjoyment");
+        offerRef.child("Lasagna").child("availability").setValue("1 hour");
+        offerRef.child("Lasagna").child("name").setValue("Lasagna");
+        offerRef.child("Lasagna").child("description").setValue("Lasagna for you sad soul");
+        offerRef.child("Sarmale").child("availability").setValue("3 hour");
+        offerRef.child("Sarmale").child("name").setValue("Sarmale");
+        offerRef.child("Sarmale").child("description").setValue("Be bamboozled by this traditional Balkan dish");
         System.out.println("Resetted");
     }
 }

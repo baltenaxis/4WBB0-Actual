@@ -28,6 +28,16 @@ public class OptionPutOrTake extends AppCompatActivity {
             }
         });
 
+        Button main= findViewById(R.id.button);
+        main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Mainpage.class);
+                startActivity(intent);
+
+            }
+        });
+
         putfoodin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

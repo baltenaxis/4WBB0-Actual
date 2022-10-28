@@ -1,6 +1,7 @@
 package com.example.database2;
 
 
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;

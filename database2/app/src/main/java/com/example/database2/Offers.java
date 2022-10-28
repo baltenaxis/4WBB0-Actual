@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -33,6 +34,7 @@ public class Offers extends AppCompatActivity {
     private ListView list;
     private static HashMap<String, ArrayList<String>> hashMap;
     private Popup.state done= Popup.state.WAIT;
+    private boolean drawn = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,10 @@ public class Offers extends AppCompatActivity {
         lockerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(drawn){
+                    Intent intent = new Intent(getApplicationContext(), Offers.class);
+                    startActivity(intent);
+                }
                 for (DataSnapshot snapshot_a : snapshot.getChildren()) {
 
                     String availability = snapshot_a.child("availability").getValue(String.class);
@@ -79,11 +85,11 @@ public class Offers extends AppCompatActivity {
     }
 
     public void draw(){
+        setContentView(R.layout.activity_offers);
         ArrayList<String> brat = hashMap.get("name");
         ArrayList<String> brat1 = hashMap.get("description");
         ArrayList<String> brat2 = hashMap.get("availability");
-
-        setContentView(R.layout.activity_offers);
+        drawn= true;
 
         String[]kur2 = brat.toArray(new String[0]);
         String[] kur4 = brat1.toArray(new String[0]);
@@ -99,7 +105,6 @@ public class Offers extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 Popup popUpClass = new Popup(kur2[position]);
                 popUpClass.showPopupWindow(view);
-
             }
         });
 
@@ -120,10 +125,6 @@ public class Offers extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        if(done== Popup.state.ACCEPT|| done == Popup.state.REJECT){
-            Intent intent = new Intent(getApplicationContext(), OptionPutOrTake.class);
-            startActivity(intent);
-        }
 
     }
 }
